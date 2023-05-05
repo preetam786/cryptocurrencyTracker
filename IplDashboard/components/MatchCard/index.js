@@ -1,8 +1,8 @@
 const MatchCard = props => {
-  const {recentMatchData} = props
-  console.log(recentMatchData)
+  const {recentMatchDetails} = props
+  console.log(recentMatchDetails)
 
-  return <div className="match-card">This is match card</div>
+  return <div> this is MatchCard</div>
 }
 
 export default MatchCard

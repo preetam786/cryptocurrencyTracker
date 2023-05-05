@@ -1,8 +1,9 @@
 import {Component} from 'react'
 import LatestMatch from '../LatestMatch'
+import MatchCard from '../MatchCard'
 
 class TeamMatches extends Component {
-  state = {teamMatchesDetailsList: []}
+  state = {teamMatchesDetailsList: {}}
 
   componentDidMount() {
     this.getTeamMatchesDetails()
@@ -30,6 +31,7 @@ class TeamMatches extends Component {
     const {id} = params
     const response = await fetch(`https://apis.ccbp.in/ipl/${id}`)
     const fetchedData = await response.json()
+    console.log(fetchedData)
 
     const formattedFetchedData = {
       latestMatchDetails: this.getFormattedData(
@@ -44,17 +46,40 @@ class TeamMatches extends Component {
     this.setState({teamMatchesDetailsList: formattedFetchedData})
   }
 
-  render() {
+  renderLatestMatchesList = () => {
     const {teamMatchesDetailsList} = this.state
     const {latestMatchDetails, teamBannerUrl} = teamMatchesDetailsList
-    console.log(teamMatchesDetailsList)
+
+    return (
+      <div className="team-banner-">
+        jpn
+        <img src={teamBannerUrl} className="team-banner-image" alt="" />
+        <LatestMatch matchDetails={latestMatchDetails} />
+      </div>
+    )
+  }
+
+  renderRecentMatchesList = () => {
+    const {teamMatchesDetailsList} = this.state
+    const {recentMatches} = teamMatchesDetailsList
+
+    return (
+      <ul>
+        {recentMatches.map(eachRecentMatch => (
+          <MatchCard
+            key={eachRecentMatch.id}
+            recentMatchDetails={eachRecentMatch}
+          />
+        ))}
+      </ul>
+    )
+  }
+
+  render() {
     return (
       <div className="team-matches-card">
-        <div className="team-banner-">
-          jpn
-          <img src={teamBannerUrl} className="team-banner-image" alt="" />
-          <LatestMatch matchDetails={latestMatchDetails} />
-        </div>
+        {this.renderLatestMatchesList()}
+        {this.renderRecentMatchesList()}
       </div>
     )
   }
