@@ -1,10 +1,10 @@
 import './index.css'
 
 const LatestMatch = props => {
-  const {latestMatchData} = props
-  console.log(latestMatchData)
-  const {manOfTheMatch} = latestMatchData
-  console.log(manOfTheMatch)
+  const {matchDetails} = props
+  console.log(matchDetails)
+  //   const {manOfTheMatch} = matchDetails
+  //   console.log(manOfTheMatch)
   //   const {
   //     competingTeam,
   //     competingTeamLogo,

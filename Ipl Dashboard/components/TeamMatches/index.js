@@ -1,6 +1,6 @@
 import {Component} from 'react'
 import LatestMatch from '../LatestMatch'
-import MatchCard from '../MatchCard'
+// import MatchCard from '../MatchCard'
 
 class TeamMatches extends Component {
   state = {teamMatchesDetailsList: {}}
@@ -59,27 +59,27 @@ class TeamMatches extends Component {
     )
   }
 
-  renderRecentMatchesList = () => {
-    const {teamMatchesDetailsList} = this.state
-    const {recentMatches} = teamMatchesDetailsList
+  //   renderRecentMatchesList = () => {
+  //     const {teamMatchesDetailsList} = this.state
+  //     const {recentMatches} = teamMatchesDetailsList
 
-    return (
-      <ul>
-        {recentMatches.map(eachRecentMatch => (
-          <MatchCard
-            key={eachRecentMatch.id}
-            recentMatchDetails={eachRecentMatch}
-          />
-        ))}
-      </ul>
-    )
-  }
+  //     return (
+  //       <ul>
+  //         {recentMatches.map(eachRecentMatch => (
+  //           <MatchCard
+  //             key={eachRecentMatch.id}
+  //             recentMatchDetails={eachRecentMatch}
+  //           />
+  //         ))}
+  //       </ul>
+  //     )
+  //   }
 
   render() {
     return (
       <div className="team-matches-card">
         {this.renderLatestMatchesList()}
-        {this.renderRecentMatchesList()}
+        {/* {this.renderRecentMatchesList()} */}
       </div>
     )
   }
